@@ -1,0 +1,270 @@
+/*Variables*/
+:root {
+  --main-color: #f2cb07;
+  --main-color-background: #000;
+  --main-color-text: #fff;
+  --border-radius-card: 20px;
+}
+/*Font*/
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap");
+/*Selection*/
+::-moz-selection {
+  background-color: var(--main-color);
+  color: var(--main-color-text);
+}
+::selection {
+  background-color: var(--main-color);
+  color: var(--main-color-text);
+}
+/*Scrollbar*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--main-color-background);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+  border-radius: var(--border-radius-card);
+}
+::-webkit-scrollbar-corner {
+  background-color: var(--main-color);
+  border-radius: 100%;
+}
+/*Html*/
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+/*All*/
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/*Body*/
+body {
+  font-family: "Work Sans", sans-serif;
+  background-color: #000;
+  /*Perspective*/
+  -webkit-perspective: 300px;
+  perspective: 300px;
+}
+/*Start Title*/
+h1 {
+  text-align: center;
+  position: relative;
+  -webkit-transform: all 0.9s;
+  -ms-transform: all 0.9s;
+  transform: all 0.9s;
+  color: var(--main-color-text);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto 80px;
+}
+h1::before {
+  position: absolute;
+  content: "";
+  width: 130px;
+  height: 40px;
+  background-color: var(--main-color);
+  z-index: -1;
+  top: 14px;
+  right: -10px;
+  border-radius: calc(var(--border-radius-card) / 2);
+}
+h1:hover::before {
+  right: 20px;
+}
+/*End Title*/
+/*Start Header*/
+header {
+  background-color: var(--main-color-background);
+  height: 55px;
+  padding: 0 30px;
+  margin-bottom: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 1px solid var(--main-color);
+}
+header p {
+  color: var(--main-color-text);
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  margin: 0 20px;
+}
+header p span {
+  color: var(--main-color);
+}
+header img {
+  width: 40px;
+  height: 40px;
+}
+/*End Header*/
+/*Start Cards*/
+.cards {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 10px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.card {
+  position: relative;
+  width: 350px;
+  height: 450px;
+  margin: 0 auto 100px;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  /*Transform Style 3d*/
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  border-radius: var(--border-radius-card);
+}
+.card:hover {
+  /*Transform Rotate*/
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.card .card-face,
+.card .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--border-radius-card);
+}
+.card .card-face {
+  background-color: var(--main-color-text);
+  z-index: 1;
+  /*Backface Hidden*/
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.card .card-face .product-image {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--border-radius-card);
+}
+.card .card-face .product-image.im-1 {
+  background-image: url("images/prod0.jpg");
+}
+.card .card-face .product-image.im-2 {
+  background-image: url("images/prod2.jpg");
+}
+
+.card .card-face .product-image.im-3 {
+  background-image: url("images/prod3.jpg");
+}
+.card .card-face .product-image::before {
+  position: absolute;
+  content: "";
+  color: var(--main-color-text);
+  width: 90px;
+  height: 90px;
+  background-color: var(--main-color);
+  right: 20px;
+  bottom: 80px;
+  border-radius: 50%;
+  text-align: center;
+  border: 6px solid var(--main-color-text);
+}
+.card .card-face .product-image::after {
+  position: absolute;
+  content: attr(data-price);
+  right: 35px;
+  bottom: 119px;
+  color: var(--main-color-text);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.card .card-face .product-name {
+  text-align: center;
+  padding: 10% 0;
+}
+.card .card-face .product-name h2 {
+  text-transform: capitalize;
+  font-size: 1.2;
+  color: #000;
+  margin: 10px 0;
+}
+.card .card-face .product-name p {
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  line-height: 1.8;
+  text-align: center;
+}
+.card .card-back {
+  background-color: var(--main-color-text);
+  z-index: -1;
+  padding: 150px 40px;
+  /*Backface Hidden*/
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /*Transform Rotate*/
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.card .card-back p {
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  line-height: 1.8;
+  text-align: center;
+}
+.card .card-back button {
+  cursor: pointer;
+  margin: 100px 40px;
+  display: inline;
+  outline: none;
+  border: none;
+  background-color: var(--main-color);
+  padding: 15px;
+  border-radius: var(--border-radius-card);
+  width: 200px;
+  color: var(--main-color-text);
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  -webkit-box-shadow: -1px 0px 7px 4px rgba(242, 203, 7, 0.63);
+  box-shadow: -1px 0px 7px 4px rgba(242, 203, 7, 0.63);
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.card .card-back button:hover {
+  -webkit-box-shadow: -1px 0px 10px 14px rgba(242, 203, 7, 0.63);
+  box-shadow: -1px 0px 10px 14px rgba(242, 203, 7, 0.63);
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+/*End Cards*/
+/*Start Footer*/
+footer {
+  background-color: var(--main-color-background);
+  height: 40px;
+  padding: 0 30px;
+  border-top: 1px solid var(--main-color);
+}
+footer p {
+  color: var(--main-color-text);
+  text-align: center;
+  padding: 10px 0;
+  text-transform: capitalize;
+}
+footer p span {
+  color: var(--main-color);
+}
+/*End Footer*/
